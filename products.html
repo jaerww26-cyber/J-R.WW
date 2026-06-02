@@ -23,51 +23,32 @@
 
     .stars,
     .stars2,
-    .stars3{
+    .stars3,
+    .stars4{
       position:fixed;
       inset:0;
       pointer-events:none;
     }
 
-    .stars{
-      z-index:-3;
-      animation:moveStars 160s linear infinite;
-    }
-
-    .stars2{
-      z-index:-2;
-      animation:moveStars 110s linear infinite;
-    }
-
-    .stars3{
-      z-index:-1;
-      animation:moveStars 70s linear infinite;
-    }
+    .stars{ z-index:-4; animation:moveStars 180s linear infinite; }
+    .stars2{ z-index:-3; animation:moveStars 130s linear infinite; }
+    .stars3{ z-index:-2; animation:moveStars 90s linear infinite; }
+    .stars4{ z-index:-1; animation:moveStars 220s linear infinite; }
 
     .star{
       position:absolute;
       color:white;
+      transform:rotate(45deg);
       text-shadow:
-        0 0 8px white,
-        0 0 18px white,
-        0 0 30px rgba(255,255,255,0.6);
-      animation:twinkle 3s ease-in-out infinite;
+        0 0 4px rgba(255,255,255,.9),
+        0 0 10px rgba(255,255,255,.75),
+        0 0 18px rgba(255,255,255,.45);
+      animation:twinkle 4s ease-in-out infinite;
     }
 
-    .star.small{
-      font-size:8px;
-      opacity:.45;
-    }
-
-    .star.medium{
-      font-size:14px;
-      opacity:.75;
-    }
-
-    .star.large{
-      font-size:22px;
-      opacity:1;
-    }
+    .star.small{ font-size:7px; opacity:.4; }
+    .star.medium{ font-size:11px; opacity:.65; }
+    .star.large{ font-size:16px; opacity:.85; }
 
     header{
       padding:28px 50px;
@@ -134,9 +115,7 @@
       animation:float 4s ease-in-out infinite;
     }
 
-    .product:nth-child(2){
-      animation-delay:.6s;
-    }
+    .product:nth-child(2){ animation-delay:.6s; }
 
     .product-image{
       height:380px;
@@ -198,9 +177,7 @@
       overflow-y:auto;
     }
 
-    .cart-panel.open{
-      right:0;
-    }
+    .cart-panel.open{ right:0; }
 
     .cart-item{
       border-bottom:1px solid rgba(255,255,255,.2);
@@ -221,9 +198,7 @@
       margin-top:4px;
     }
 
-    .remove-btn:hover{
-      color:white;
-    }
+    .remove-btn:hover{ color:white; }
 
     .checkout{
       display:block;
@@ -275,9 +250,7 @@
       cursor:pointer;
     }
 
-    footer a:hover{
-      color:white;
-    }
+    footer a:hover{ color:white; }
 
     .policy-page{
       display:none;
@@ -325,8 +298,11 @@
     }
 
     @keyframes twinkle{
-      0%,100%{opacity:.35;}
-      50%{opacity:1;}
+      0%{opacity:.15;}
+      25%{opacity:.75;}
+      50%{opacity:.25;}
+      75%{opacity:1;}
+      100%{opacity:.15;}
     }
 
     @media(max-width:800px){
@@ -345,40 +321,61 @@
 <body>
 
   <div class="stars">
-    <span class="star small" style="top:5%;left:10%;">✦</span>
-    <span class="star medium" style="top:12%;left:26%;">✦</span>
-    <span class="star small" style="top:18%;left:44%;">✦</span>
-    <span class="star large" style="top:24%;left:70%;">✦</span>
-    <span class="star small" style="top:31%;left:88%;">✦</span>
-    <span class="star medium" style="top:42%;left:12%;">✦</span>
-    <span class="star small" style="top:50%;left:34%;">✦</span>
-    <span class="star large" style="top:59%;left:58%;">✦</span>
-    <span class="star small" style="top:68%;left:76%;">✦</span>
-    <span class="star medium" style="top:78%;left:21%;">✦</span>
-    <span class="star large" style="top:88%;left:47%;">✦</span>
-    <span class="star small" style="top:95%;left:91%;">✦</span>
+    <span class="star small" style="top:5%;left:10%;">◇</span>
+    <span class="star medium" style="top:12%;left:26%;">◇</span>
+    <span class="star small" style="top:18%;left:44%;">◇</span>
+    <span class="star large" style="top:24%;left:70%;">◇</span>
+    <span class="star small" style="top:31%;left:88%;">◇</span>
+    <span class="star medium" style="top:42%;left:12%;">◇</span>
+    <span class="star small" style="top:50%;left:34%;">◇</span>
+    <span class="star large" style="top:59%;left:58%;">◇</span>
+    <span class="star small" style="top:68%;left:76%;">◇</span>
+    <span class="star medium" style="top:78%;left:21%;">◇</span>
+    <span class="star large" style="top:88%;left:47%;">◇</span>
+    <span class="star small" style="top:95%;left:91%;">◇</span>
   </div>
 
   <div class="stars2">
-    <span class="star medium" style="top:6%;left:55%;">✦</span>
-    <span class="star small" style="top:14%;left:82%;">✦</span>
-    <span class="star large" style="top:27%;left:18%;">✦</span>
-    <span class="star small" style="top:38%;left:40%;">✦</span>
-    <span class="star medium" style="top:48%;left:64%;">✦</span>
-    <span class="star small" style="top:57%;left:7%;">✦</span>
-    <span class="star large" style="top:69%;left:83%;">✦</span>
-    <span class="star medium" style="top:81%;left:35%;">✦</span>
-    <span class="star small" style="top:92%;left:62%;">✦</span>
+    <span class="star medium" style="top:6%;left:55%;">◇</span>
+    <span class="star small" style="top:14%;left:82%;">◇</span>
+    <span class="star large" style="top:27%;left:18%;">◇</span>
+    <span class="star small" style="top:38%;left:40%;">◇</span>
+    <span class="star medium" style="top:48%;left:64%;">◇</span>
+    <span class="star small" style="top:57%;left:7%;">◇</span>
+    <span class="star large" style="top:69%;left:83%;">◇</span>
+    <span class="star medium" style="top:81%;left:35%;">◇</span>
+    <span class="star small" style="top:92%;left:62%;">◇</span>
   </div>
 
   <div class="stars3">
-    <span class="star large" style="top:8%;left:92%;">✦</span>
-    <span class="star medium" style="top:20%;left:6%;">✦</span>
-    <span class="star large" style="top:34%;left:52%;">✦</span>
-    <span class="star medium" style="top:46%;left:78%;">✦</span>
-    <span class="star large" style="top:62%;left:28%;">✦</span>
-    <span class="star medium" style="top:74%;left:90%;">✦</span>
-    <span class="star large" style="top:90%;left:14%;">✦</span>
+    <span class="star large" style="top:8%;left:92%;">◇</span>
+    <span class="star medium" style="top:20%;left:6%;">◇</span>
+    <span class="star large" style="top:34%;left:52%;">◇</span>
+    <span class="star medium" style="top:46%;left:78%;">◇</span>
+    <span class="star large" style="top:62%;left:28%;">◇</span>
+    <span class="star medium" style="top:74%;left:90%;">◇</span>
+    <span class="star large" style="top:90%;left:14%;">◇</span>
+  </div>
+
+  <div class="stars4">
+    <span class="star small" style="top:2%;left:4%;">◇</span>
+    <span class="star small" style="top:6%;left:12%;">◇</span>
+    <span class="star medium" style="top:10%;left:24%;">◇</span>
+    <span class="star small" style="top:14%;left:36%;">◇</span>
+    <span class="star small" style="top:18%;left:52%;">◇</span>
+    <span class="star medium" style="top:22%;left:68%;">◇</span>
+    <span class="star large" style="top:28%;left:84%;">◇</span>
+    <span class="star small" style="top:34%;left:8%;">◇</span>
+    <span class="star medium" style="top:40%;left:20%;">◇</span>
+    <span class="star small" style="top:46%;left:32%;">◇</span>
+    <span class="star large" style="top:52%;left:48%;">◇</span>
+    <span class="star medium" style="top:58%;left:64%;">◇</span>
+    <span class="star small" style="top:64%;left:80%;">◇</span>
+    <span class="star medium" style="top:70%;left:14%;">◇</span>
+    <span class="star small" style="top:76%;left:28%;">◇</span>
+    <span class="star medium" style="top:82%;left:44%;">◇</span>
+    <span class="star large" style="top:88%;left:60%;">◇</span>
+    <span class="star small" style="top:92%;left:76%;">◇</span>
   </div>
 
   <header>
