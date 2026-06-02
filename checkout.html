@@ -147,21 +147,31 @@ button{
     </div>
   </div>
 
-  <label>Country</label>
-  <select name="Country" required>
-    <option>United Kingdom</option>
-    <option>United States</option>
-    <option>Canada</option>
-    <option>France</option>
-    <option>Germany</option>
-    <option>Spain</option>
-    <option>Italy</option>
-    <option>Portugal</option>
-    <option>Netherlands</option>
-    <option>Belgium</option>
-    <option>Ireland</option>
-    <option>Other</option>
-  </select>
+<select name="Country" id="countrySelect" required>
+  <option>United Kingdom</option>
+  <option>United States</option>
+  <option>Canada</option>
+  <option>France</option>
+  <option>Germany</option>
+  <option>Spain</option>
+  <option>Italy</option>
+  <option>Portugal</option>
+  <option>Netherlands</option>
+  <option>Belgium</option>
+  <option>Ireland</option>
+  <option>Other</option>
+</select>
+  <label id="otherCountryLabel" style="display:none;">
+  Enter Country
+</label>
+
+<input
+  type="text"
+  name="Other Country"
+  id="otherCountryInput"
+  placeholder="Enter your country"
+  style="display:none;"
+>
 
   <label>Address</label>
   <input type="text" name="Address" required>
