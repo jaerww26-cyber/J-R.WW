@@ -18,32 +18,11 @@
       color:white;
       overflow-x:hidden;
       position:relative;
-
       background:
-        radial-gradient(circle at 8% 14%, rgba(255,255,255,.95) 1px, transparent 2px),
-        radial-gradient(circle at 22% 78%, rgba(255,255,255,.75) 1px, transparent 2px),
-        radial-gradient(circle at 45% 28%, rgba(255,255,255,.85) 1px, transparent 2px),
-        radial-gradient(circle at 68% 62%, rgba(255,255,255,.65) 1px, transparent 2px),
-        radial-gradient(circle at 88% 18%, rgba(255,255,255,.9) 1px, transparent 2px),
-        radial-gradient(circle at 76% 86%, rgba(255,255,255,.7) 1px, transparent 2px),
-
-        radial-gradient(circle at 20% 25%, rgba(90,100,255,.10), transparent 35%),
-        radial-gradient(circle at 78% 55%, rgba(150,70,255,.08), transparent 40%),
-        radial-gradient(circle at 50% 90%, rgba(255,255,255,.04), transparent 45%),
-
-        linear-gradient(180deg,#000 0%,#050505 45%,#000 100%);
-
-      background-size:
-        120px 120px,
-        180px 180px,
-        240px 240px,
-        300px 300px,
-        360px 360px,
-        420px 420px,
-        auto,
-        auto,
-        auto,
-        auto;
+        radial-gradient(circle at 18% 24%, rgba(255,255,255,.12), transparent 18%),
+        radial-gradient(circle at 82% 16%, rgba(120,140,255,.12), transparent 24%),
+        radial-gradient(circle at 50% 75%, rgba(255,255,255,.07), transparent 28%),
+        linear-gradient(180deg,#020202,#060606 45%,#000);
     }
 
     body::before{
@@ -51,37 +30,157 @@
       position:fixed;
       inset:0;
       pointer-events:none;
-      z-index:-2;
-
-      background:
-        radial-gradient(circle at 15% 25%, rgba(255,255,255,.18) 0px, transparent 2px),
-        radial-gradient(circle at 35% 75%, rgba(255,255,255,.12) 0px, transparent 2px),
-        radial-gradient(circle at 65% 35%, rgba(255,255,255,.16) 0px, transparent 2px),
-        radial-gradient(circle at 85% 80%, rgba(255,255,255,.1) 0px, transparent 2px);
-
-      background-size:
-        90px 90px,
-        130px 130px,
-        170px 170px,
-        220px 220px;
-
-      opacity:.9;
-      animation:starsFloat 80s linear infinite;
+      z-index:-4;
+      background-image:
+        radial-gradient(1px 1px at 20px 30px,#fff,transparent),
+        radial-gradient(1px 1px at 80px 120px,#fff,transparent),
+        radial-gradient(2px 2px at 160px 250px,#fff,transparent),
+        radial-gradient(1px 1px at 240px 90px,#fff,transparent),
+        radial-gradient(2px 2px at 380px 180px,#fff,transparent),
+        radial-gradient(1px 1px at 520px 70px,#fff,transparent),
+        radial-gradient(2px 2px at 690px 320px,#fff,transparent),
+        radial-gradient(1px 1px at 820px 160px,#fff,transparent),
+        radial-gradient(2px 2px at 990px 260px,#fff,transparent),
+        radial-gradient(1px 1px at 1150px 100px,#fff,transparent),
+        radial-gradient(2px 2px at 1320px 390px,#fff,transparent),
+        radial-gradient(1px 1px at 1480px 220px,#fff,transparent),
+        radial-gradient(1px 1px at 100px 560px,#fff,transparent),
+        radial-gradient(2px 2px at 320px 700px,#fff,transparent),
+        radial-gradient(1px 1px at 540px 620px,#fff,transparent),
+        radial-gradient(2px 2px at 760px 810px,#fff,transparent),
+        radial-gradient(1px 1px at 980px 680px,#fff,transparent),
+        radial-gradient(2px 2px at 1250px 760px,#fff,transparent);
+      background-repeat:repeat;
+      background-size:1600px 900px;
+      animation:starsMove 120s linear infinite;
+      opacity:.95;
     }
 
     body::after{
       content:"";
       position:fixed;
-      inset:-20%;
+      inset:0;
       pointer-events:none;
       z-index:-3;
-
       background:
-        radial-gradient(circle at 30% 40%, rgba(0,90,255,.10), transparent 38%),
-        radial-gradient(circle at 70% 60%, rgba(120,0,255,.10), transparent 42%),
-        radial-gradient(circle at center, rgba(255,255,255,.035), transparent 55%);
+        radial-gradient(circle at 12% 82%, rgba(255,255,255,.14), transparent 8%),
+        radial-gradient(circle at 86% 22%, rgba(255,255,255,.18), transparent 9%),
+        radial-gradient(circle at center, rgba(255,255,255,.04), transparent 60%);
+    }
 
-      animation:spaceDrift 25s ease-in-out infinite alternate;
+    .spacecraft{
+      position:fixed;
+      top:115px;
+      left:7%;
+      width:230px;
+      height:105px;
+      z-index:-1;
+      opacity:.92;
+      transform:rotate(-8deg);
+      animation:shipFloat 8s ease-in-out infinite;
+      filter:drop-shadow(0 0 22px rgba(255,255,255,.32));
+    }
+
+    .ship-core{
+      position:absolute;
+      top:38px;
+      left:62px;
+      width:120px;
+      height:32px;
+      background:linear-gradient(90deg,#080808 0%,#555 25%,#eee 50%,#333 78%,#050505 100%);
+      clip-path:polygon(0 50%,16% 0,78% 0,100% 50%,78% 100%,16% 100%);
+      border:1px solid rgba(255,255,255,.7);
+    }
+
+    .ship-nose{
+      position:absolute;
+      top:43px;
+      left:175px;
+      width:42px;
+      height:22px;
+      background:linear-gradient(90deg,#aaa,#fff,#222);
+      clip-path:polygon(0 0,100% 50%,0 100%);
+      border:1px solid rgba(255,255,255,.5);
+    }
+
+    .ship-window{
+      position:absolute;
+      top:45px;
+      left:112px;
+      width:22px;
+      height:14px;
+      border-radius:50%;
+      background:white;
+      box-shadow:0 0 16px white;
+    }
+
+    .ship-wing-top{
+      position:absolute;
+      top:9px;
+      left:82px;
+      width:88px;
+      height:38px;
+      background:linear-gradient(135deg,#050505,#444,#111);
+      border:1px solid rgba(255,255,255,.5);
+      clip-path:polygon(0 100%,100% 100%,68% 0);
+    }
+
+    .ship-wing-bottom{
+      position:absolute;
+      top:62px;
+      left:82px;
+      width:88px;
+      height:38px;
+      background:linear-gradient(45deg,#050505,#444,#111);
+      border:1px solid rgba(255,255,255,.5);
+      clip-path:polygon(0 0,100% 0,68% 100%);
+    }
+
+    .ship-tail{
+      position:absolute;
+      top:35px;
+      left:38px;
+      width:38px;
+      height:38px;
+      background:#090909;
+      border:1px solid rgba(255,255,255,.55);
+      clip-path:polygon(0 0,100% 35%,100% 65%,0 100%);
+    }
+
+    .ship-flame{
+      position:absolute;
+      top:47px;
+      left:0;
+      width:58px;
+      height:14px;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),rgba(255,255,255,.95));
+      filter:blur(3px);
+      animation:flamePulse .45s infinite alternate;
+    }
+
+    .planet{
+      position:fixed;
+      width:170px;
+      height:170px;
+      right:8%;
+      top:16%;
+      border-radius:50%;
+      z-index:-2;
+      background:radial-gradient(circle at 30% 30%, #fff, #555 24%, #111 62%, #000);
+      box-shadow:0 0 55px rgba(255,255,255,.18);
+      opacity:.5;
+    }
+
+    .planet::after{
+      content:"";
+      position:absolute;
+      width:230px;
+      height:42px;
+      left:-30px;
+      top:62px;
+      border:2px solid rgba(255,255,255,.35);
+      border-radius:50%;
+      transform:rotate(-18deg);
     }
 
     header{
@@ -345,14 +444,19 @@
       50%{transform:translateY(-18px);}
     }
 
-    @keyframes starsFloat{
+    @keyframes starsMove{
       from{transform:translateY(0);}
-      to{transform:translateY(-220px);}
+      to{transform:translateY(-900px);}
     }
 
-    @keyframes spaceDrift{
-      from{transform:translateX(-50px) translateY(-30px);}
-      to{transform:translateX(50px) translateY(30px);}
+    @keyframes shipFloat{
+      0%,100%{transform:translateY(0) rotate(-8deg);}
+      50%{transform:translateY(-30px) rotate(-4deg);}
+    }
+
+    @keyframes flamePulse{
+      from{width:45px;opacity:.45;}
+      to{width:75px;opacity:1;}
     }
 
     @media(max-width:800px){
@@ -364,11 +468,26 @@
       footer{flex-direction:column;}
       .policy-page{padding:30px;}
       .policy-page h1{font-size:38px;}
+      .spacecraft{transform:scale(.75) rotate(-8deg);left:0;top:125px;}
+      .planet{width:95px;height:95px;}
+      .planet::after{width:135px;height:25px;left:-20px;top:36px;}
     }
   </style>
 </head>
 
 <body>
+
+  <div class="planet"></div>
+
+  <div class="spacecraft">
+    <div class="ship-flame"></div>
+    <div class="ship-tail"></div>
+    <div class="ship-wing-top"></div>
+    <div class="ship-core"></div>
+    <div class="ship-nose"></div>
+    <div class="ship-window"></div>
+    <div class="ship-wing-bottom"></div>
+  </div>
 
   <header>
     <a href="home.html" class="brand">JÆR.WW</a>
