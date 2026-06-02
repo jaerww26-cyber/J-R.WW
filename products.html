@@ -6,12 +6,7 @@
   <title>JÆR.WW | Products</title>
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
 
     body{
       min-height:100vh;
@@ -19,10 +14,10 @@
       overflow-x:hidden;
       position:relative;
       background:
-      radial-gradient(circle at 20% 20%, rgba(255,255,255,.12), transparent 18%),
-      radial-gradient(circle at 80% 25%, rgba(120,120,255,.08), transparent 20%),
-      radial-gradient(circle at 50% 80%, rgba(255,255,255,.06), transparent 25%),
-      #000;
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.12), transparent 18%),
+        radial-gradient(circle at 80% 25%, rgba(120,120,255,.08), transparent 20%),
+        radial-gradient(circle at 50% 80%, rgba(255,255,255,.06), transparent 25%),
+        #000;
     }
 
     body::before{
@@ -32,26 +27,24 @@
       pointer-events:none;
       z-index:-3;
       background-image:
-      radial-gradient(1px 1px at 20px 30px,#fff,transparent),
-      radial-gradient(1px 1px at 90px 140px,#fff,transparent),
-      radial-gradient(2px 2px at 180px 60px,#fff,transparent),
-      radial-gradient(1px 1px at 260px 220px,#fff,transparent),
-      radial-gradient(2px 2px at 390px 90px,#fff,transparent),
-      radial-gradient(1px 1px at 520px 300px,#fff,transparent),
-      radial-gradient(2px 2px at 680px 150px,#fff,transparent),
-      radial-gradient(1px 1px at 820px 260px,#fff,transparent),
-      radial-gradient(2px 2px at 960px 110px,#fff,transparent),
-      radial-gradient(1px 1px at 1100px 310px,#fff,transparent),
-      radial-gradient(2px 2px at 1280px 190px,#fff,transparent),
-      radial-gradient(1px 1px at 1450px 420px,#fff,transparent),
-      radial-gradient(1px 1px at 70px 520px,#fff,transparent),
-      radial-gradient(2px 2px at 230px 680px,#fff,transparent),
-      radial-gradient(1px 1px at 430px 610px,#fff,transparent),
-      radial-gradient(2px 2px at 650px 760px,#fff,transparent),
-      radial-gradient(1px 1px at 890px 590px,#fff,transparent),
-      radial-gradient(2px 2px at 1180px 720px,#fff,transparent),
-      radial-gradient(1px 1px at 1360px 640px,#fff,transparent),
-      radial-gradient(3px 3px at 1500px 800px,#fff,transparent);
+        radial-gradient(1px 1px at 20px 30px,#fff,transparent),
+        radial-gradient(1px 1px at 90px 140px,#fff,transparent),
+        radial-gradient(2px 2px at 180px 60px,#fff,transparent),
+        radial-gradient(1px 1px at 260px 220px,#fff,transparent),
+        radial-gradient(2px 2px at 390px 90px,#fff,transparent),
+        radial-gradient(1px 1px at 520px 300px,#fff,transparent),
+        radial-gradient(2px 2px at 680px 150px,#fff,transparent),
+        radial-gradient(1px 1px at 820px 260px,#fff,transparent),
+        radial-gradient(2px 2px at 960px 110px,#fff,transparent),
+        radial-gradient(1px 1px at 1100px 310px,#fff,transparent),
+        radial-gradient(2px 2px at 1280px 190px,#fff,transparent),
+        radial-gradient(1px 1px at 1450px 420px,#fff,transparent),
+        radial-gradient(1px 1px at 70px 520px,#fff,transparent),
+        radial-gradient(2px 2px at 230px 680px,#fff,transparent),
+        radial-gradient(1px 1px at 430px 610px,#fff,transparent),
+        radial-gradient(2px 2px at 650px 760px,#fff,transparent),
+        radial-gradient(1px 1px at 890px 590px,#fff,transparent),
+        radial-gradient(2px 2px at 1180px 720px,#fff,transparent);
       background-repeat:repeat;
       background-size:1600px 900px;
       animation:starsMove 90s linear infinite;
@@ -65,65 +58,82 @@
       pointer-events:none;
       z-index:-2;
       background-image:
-      radial-gradient(1px 1px at 120px 90px,rgba(255,255,255,.8),transparent),
-      radial-gradient(1px 1px at 360px 260px,rgba(255,255,255,.7),transparent),
-      radial-gradient(1px 1px at 720px 440px,rgba(255,255,255,.8),transparent),
-      radial-gradient(1px 1px at 1040px 180px,rgba(255,255,255,.7),transparent),
-      radial-gradient(1px 1px at 1320px 500px,rgba(255,255,255,.8),transparent);
+        radial-gradient(1px 1px at 120px 90px,rgba(255,255,255,.8),transparent),
+        radial-gradient(1px 1px at 360px 260px,rgba(255,255,255,.7),transparent),
+        radial-gradient(1px 1px at 720px 440px,rgba(255,255,255,.8),transparent),
+        radial-gradient(1px 1px at 1040px 180px,rgba(255,255,255,.7),transparent),
+        radial-gradient(1px 1px at 1320px 500px,rgba(255,255,255,.8),transparent);
       background-repeat:repeat;
       background-size:1400px 800px;
       animation:starsMoveSlow 150s linear infinite;
       opacity:.8;
     }
 
-    .space-object{
+    .spacecraft{
       position:fixed;
-      pointer-events:none;
+      top:120px;
+      left:7%;
+      width:170px;
+      height:70px;
       z-index:-1;
+      opacity:.85;
+      animation:shipFloat 7s ease-in-out infinite;
+      filter:drop-shadow(0 0 18px rgba(255,255,255,.35));
+    }
+
+    .ship-body{
+      position:absolute;
+      top:22px;
+      left:35px;
+      width:100px;
+      height:28px;
+      background:linear-gradient(90deg,#111,#dcdcdc,#333);
+      clip-path:polygon(0 50%,20% 0,78% 0,100% 50%,78% 100%,20% 100%);
+      border:1px solid rgba(255,255,255,.65);
+    }
+
+    .ship-window{
+      position:absolute;
+      top:27px;
+      left:78px;
+      width:18px;
+      height:12px;
+      background:white;
       border-radius:50%;
-      opacity:.45;
-      filter:blur(.2px);
-      animation:floatSpace 9s ease-in-out infinite;
+      box-shadow:0 0 12px white;
     }
 
-    .planet-one{
-      width:150px;
-      height:150px;
-      top:18%;
-      left:6%;
-      background:
-      radial-gradient(circle at 35% 35%, rgba(255,255,255,.9), rgba(120,120,120,.35) 28%, rgba(20,20,20,.1) 70%);
-      box-shadow:0 0 50px rgba(255,255,255,.18);
+    .ship-wing-left{
+      position:absolute;
+      top:44px;
+      left:55px;
+      width:55px;
+      height:28px;
+      background:#111;
+      border:1px solid rgba(255,255,255,.5);
+      clip-path:polygon(0 0,100% 0,65% 100%);
     }
 
-    .planet-two{
-      width:90px;
-      height:90px;
-      right:10%;
-      top:58%;
-      background:
-      radial-gradient(circle at 30% 30%, rgba(255,255,255,.8), rgba(80,80,100,.35) 35%, rgba(0,0,0,.2) 70%);
-      box-shadow:0 0 45px rgba(255,255,255,.16);
-      animation-delay:1.5s;
+    .ship-wing-right{
+      position:absolute;
+      top:0;
+      left:55px;
+      width:55px;
+      height:28px;
+      background:#111;
+      border:1px solid rgba(255,255,255,.5);
+      clip-path:polygon(0 100%,100% 100%,65% 0);
     }
 
-    .meteor{
-      position:fixed;
-      width:180px;
-      height:2px;
-      top:30%;
-      left:-220px;
-      background:linear-gradient(90deg, transparent, white, transparent);
-      opacity:.45;
-      transform:rotate(-18deg);
-      animation:meteorMove 8s linear infinite;
-      z-index:-1;
-    }
-
-    .meteor.two{
-      top:70%;
-      animation-delay:4s;
-      opacity:.28;
+    .ship-flame{
+      position:absolute;
+      top:30px;
+      left:0;
+      width:45px;
+      height:12px;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.9));
+      filter:blur(2px);
+      animation:flamePulse .4s infinite alternate;
     }
 
     header{
@@ -133,70 +143,22 @@
       align-items:center;
     }
 
-    .brand{
-      color:white;
-      text-decoration:none;
-      font-size:32px;
-      font-weight:900;
-      letter-spacing:4px;
-      text-shadow:0 0 18px rgba(255,255,255,0.45);
-    }
-
-    nav{
-      display:flex;
-      gap:25px;
-      align-items:center;
-    }
-
-    nav a,
-    .cart-btn{
-      color:white;
-      background:none;
-      border:none;
-      text-decoration:none;
-      font-weight:900;
-      text-transform:uppercase;
-      cursor:pointer;
-      font-size:14px;
-    }
-
-    .cart-btn span{
-      background:white;
-      color:black;
-      padding:3px 8px;
-      border-radius:50%;
-      margin-left:6px;
-    }
+    .brand{color:white;text-decoration:none;font-size:32px;font-weight:900;letter-spacing:4px;text-shadow:0 0 18px rgba(255,255,255,0.45);}
+    nav{display:flex;gap:25px;align-items:center;}
+    nav a,.cart-btn{color:white;background:none;border:none;text-decoration:none;font-weight:900;text-transform:uppercase;cursor:pointer;font-size:14px;}
+    .cart-btn span{background:white;color:black;padding:3px 8px;border-radius:50%;margin-left:6px;}
 
     .title{
       text-align:center;
       font-size:72px;
       margin:60px 0;
       text-transform:uppercase;
-      text-shadow:
-      0 0 15px rgba(255,255,255,.5),
-      0 0 40px rgba(255,255,255,.25),
-      0 0 80px rgba(255,255,255,.15);
+      text-shadow:0 0 15px rgba(255,255,255,.5),0 0 40px rgba(255,255,255,.25),0 0 80px rgba(255,255,255,.15);
     }
 
-    .products{
-      width:85%;
-      margin:0 auto;
-      display:flex;
-      justify-content:center;
-      gap:90px;
-      flex-wrap:wrap;
-    }
-
-    .product{
-      width:360px;
-      text-align:center;
-      animation:float 4s ease-in-out infinite;
-    }
-
-    .product:nth-child(2){
-      animation-delay:.6s;
-    }
+    .products{width:85%;margin:0 auto;display:flex;justify-content:center;gap:90px;flex-wrap:wrap;}
+    .product{width:360px;text-align:center;animation:float 4s ease-in-out infinite;}
+    .product:nth-child(2){animation-delay:.6s;}
 
     .product-image{
       height:380px;
@@ -213,25 +175,11 @@
       backdrop-filter:blur(2px);
     }
 
-    .product h2{
-      font-size:30px;
-      text-transform:uppercase;
-      margin-bottom:12px;
-    }
+    .product h2{font-size:30px;text-transform:uppercase;margin-bottom:12px;}
+    .price{font-size:26px;font-weight:900;margin-bottom:22px;}
+    .buttons{display:flex;gap:12px;}
 
-    .price{
-      font-size:26px;
-      font-weight:900;
-      margin-bottom:22px;
-    }
-
-    .buttons{
-      display:flex;
-      gap:12px;
-    }
-
-    .buttons a,
-    .buttons button{
+    .buttons a,.buttons button{
       flex:1;
       padding:18px;
       background:white;
@@ -259,192 +207,70 @@
       overflow-y:auto;
     }
 
-    .cart-panel.open{
-      right:0;
-    }
+    .cart-panel.open{right:0;}
+    .cart-item{border-bottom:1px solid rgba(255,255,255,.2);padding:15px 0;display:flex;justify-content:space-between;gap:20px;align-items:flex-start;}
+    .remove-btn{background:none;border:none;color:#888;font-size:12px;text-transform:uppercase;cursor:pointer;margin-top:4px;}
+    .remove-btn:hover{color:white;}
+    .checkout{display:block;margin-top:30px;background:white;color:black;text-align:center;padding:18px;text-decoration:none;font-weight:900;text-transform:uppercase;}
+    .close{background:none;color:white;border:none;font-size:24px;float:right;cursor:pointer;}
 
-    .cart-item{
-      border-bottom:1px solid rgba(255,255,255,.2);
-      padding:15px 0;
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      align-items:flex-start;
-    }
+    footer{margin-top:120px;padding:50px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px;}
+    footer h3{margin-bottom:18px;text-transform:uppercase;letter-spacing:3px;}
+    footer p{color:#888;line-height:2;max-width:260px;}
+    footer a{color:#888;text-decoration:none;line-height:2;cursor:pointer;}
+    footer a:hover{color:white;}
 
-    .remove-btn{
-      background:none;
-      border:none;
-      color:#888;
-      font-size:12px;
-      text-transform:uppercase;
-      cursor:pointer;
-      margin-top:4px;
-    }
+    .policy-page{display:none;position:fixed;inset:0;background:#050505;color:white;z-index:999;padding:60px;overflow-y:auto;}
+    .policy-page button{background:white;color:black;border:none;padding:15px 25px;font-weight:900;text-transform:uppercase;cursor:pointer;margin-bottom:40px;}
+    .policy-page h1{font-size:56px;text-transform:uppercase;margin-bottom:30px;}
+    .policy-page div{max-width:850px;color:#cfcfcf;line-height:2;font-size:18px;}
 
-    .remove-btn:hover{
-      color:white;
-    }
-
-    .checkout{
-      display:block;
-      margin-top:30px;
-      background:white;
-      color:black;
-      text-align:center;
-      padding:18px;
-      text-decoration:none;
-      font-weight:900;
-      text-transform:uppercase;
-    }
-
-    .close{
-      background:none;
-      color:white;
-      border:none;
-      font-size:24px;
-      float:right;
-      cursor:pointer;
-    }
-
-    footer{
-      margin-top:120px;
-      padding:50px;
-      border-top:1px solid rgba(255,255,255,0.1);
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:40px;
-    }
-
-    footer h3{
-      margin-bottom:18px;
-      text-transform:uppercase;
-      letter-spacing:3px;
-    }
-
-    footer p{
-      color:#888;
-      line-height:2;
-      max-width:260px;
-    }
-
-    footer a{
-      color:#888;
-      text-decoration:none;
-      line-height:2;
-      cursor:pointer;
-    }
-
-    footer a:hover{
-      color:white;
-    }
-
-    .policy-page{
-      display:none;
-      position:fixed;
-      inset:0;
-      background:#050505;
-      color:white;
-      z-index:999;
-      padding:60px;
-      overflow-y:auto;
-    }
-
-    .policy-page button{
-      background:white;
-      color:black;
-      border:none;
-      padding:15px 25px;
-      font-weight:900;
-      text-transform:uppercase;
-      cursor:pointer;
-      margin-bottom:40px;
-    }
-
-    .policy-page h1{
-      font-size:56px;
-      text-transform:uppercase;
-      margin-bottom:30px;
-    }
-
-    .policy-page div{
-      max-width:850px;
-      color:#cfcfcf;
-      line-height:2;
-      font-size:18px;
-    }
-
-    @keyframes float{
-      0%,100%{ transform:translateY(0); }
-      50%{ transform:translateY(-18px); }
-    }
-
-    @keyframes starsMove{
-      from{ transform:translateY(0); }
-      to{ transform:translateY(-900px); }
-    }
-
-    @keyframes starsMoveSlow{
-      from{ transform:translateY(0); }
-      to{ transform:translateY(-800px); }
-    }
-
-    @keyframes floatSpace{
-      0%,100%{ transform:translateY(0) rotate(0deg); }
-      50%{ transform:translateY(-28px) rotate(8deg); }
-    }
-
-    @keyframes meteorMove{
-      0%{ transform:translateX(0) rotate(-18deg); opacity:0; }
-      10%{ opacity:.5; }
-      100%{ transform:translateX(160vw) rotate(-18deg); opacity:0; }
-    }
+    @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-18px);}}
+    @keyframes starsMove{from{transform:translateY(0);}to{transform:translateY(-900px);}}
+    @keyframes starsMoveSlow{from{transform:translateY(0);}to{transform:translateY(-800px);}}
+    @keyframes shipFloat{0%,100%{transform:translateY(0) rotate(-6deg);}50%{transform:translateY(-28px) rotate(-2deg);}}
+    @keyframes flamePulse{from{opacity:.35;width:35px;}to{opacity:1;width:55px;}}
 
     @media(max-width:800px){
-      header{ padding:24px; }
-      nav{ gap:14px; }
-      .title{ font-size:42px; }
-      .product{ width:85%; }
-      .buttons{ flex-direction:column; }
-      footer{ flex-direction:column; }
-      .policy-page{ padding:30px; }
-      .policy-page h1{ font-size:38px; }
-      .planet-one{ width:90px; height:90px; }
-      .planet-two{ width:60px; height:60px; }
+      header{padding:24px;}
+      nav{gap:14px;}
+      .title{font-size:42px;}
+      .product{width:85%;}
+      .buttons{flex-direction:column;}
+      footer{flex-direction:column;}
+      .policy-page{padding:30px;}
+      .policy-page h1{font-size:38px;}
+      .spacecraft{width:120px;transform:scale(.75);}
     }
   </style>
 </head>
 
 <body>
 
-  <div class="space-object planet-one"></div>
-  <div class="space-object planet-two"></div>
-  <div class="meteor"></div>
-  <div class="meteor two"></div>
+  <div class="spacecraft">
+    <div class="ship-flame"></div>
+    <div class="ship-wing-right"></div>
+    <div class="ship-body"></div>
+    <div class="ship-window"></div>
+    <div class="ship-wing-left"></div>
+  </div>
 
   <header>
     <a href="home.html" class="brand">JÆR.WW</a>
-
     <nav>
       <a href="home.html">Home</a>
       <a href="contact.html">Contact</a>
-
-      <button class="cart-btn" onclick="openCart()">
-        Cart <span id="cart-count">0</span>
-      </button>
+      <button class="cart-btn" onclick="openCart()">Cart <span id="cart-count">0</span></button>
     </nav>
   </header>
 
   <h1 class="title">New Arrivals</h1>
 
   <section class="products">
-
     <div class="product">
       <div class="product-image">Product Image</div>
       <h2>WW Cap 1</h2>
       <div class="price">£40</div>
-
       <div class="buttons">
         <a href="WWCAP1.html">View Product</a>
         <button onclick="addToCart('WW Cap 1', 40)">Add</button>
@@ -455,13 +281,11 @@
       <div class="product-image">Product Image</div>
       <h2>WW Cap 2</h2>
       <div class="price">£40</div>
-
       <div class="buttons">
         <a href="WWCAP2.html">View Product</a>
         <button onclick="addToCart('WW Cap 2', 40)">Add</button>
       </div>
     </div>
-
   </section>
 
   <div class="cart-panel" id="cartPanel">
@@ -473,13 +297,9 @@
   </div>
 
   <footer>
-
     <div>
       <h3>JÆR.WW</h3>
-      <p>
-        Independent streetwear label focused on limited drops,
-        premium pieces and worldwide shipping.
-      </p>
+      <p>Independent streetwear label focused on limited drops, premium pieces and worldwide shipping.</p>
     </div>
 
     <div>
@@ -501,7 +321,6 @@
         London, United Kingdom
       </p>
     </div>
-
   </footer>
 
   <div id="policyPage" class="policy-page">
@@ -513,12 +332,10 @@
   <script>
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    function saveCart(){
-      localStorage.setItem("cart", JSON.stringify(cart));
-    }
+    function saveCart(){localStorage.setItem("cart", JSON.stringify(cart));}
 
     function addToCart(name, price){
-      cart.push({name:name, price:price, size:"One Size"});
+      cart.push({name:name,price:price,size:"One Size"});
       saveCart();
       updateCart();
       openCart();
@@ -534,83 +351,50 @@
       document.getElementById("cart-count").textContent = cart.length;
       const cartItems = document.getElementById("cartItems");
       cartItems.innerHTML = "";
-
       let subtotal = 0;
 
-      cart.forEach(function(item, index){
+      cart.forEach(function(item,index){
         subtotal += item.price;
-
         cartItems.innerHTML +=
-        '<div class="cart-item">' +
-          '<div>' +
-            '<strong>' + item.name + '</strong><br>' +
-            item.size + '<br>' +
-            '£' + item.price +
-          '</div>' +
-          '<button class="remove-btn" onclick="removeFromCart(' + index + ')">Remove</button>' +
-        '</div>';
+        '<div class="cart-item"><div><strong>' + item.name + '</strong><br>' +
+        item.size + '<br>£' + item.price +
+        '</div><button class="remove-btn" onclick="removeFromCart(' + index + ')">Remove</button></div>';
       });
 
       document.getElementById("subtotal").textContent = "Subtotal: £" + subtotal;
     }
 
-    function openCart(){
-      document.getElementById("cartPanel").classList.add("open");
-    }
-
-    function closeCart(){
-      document.getElementById("cartPanel").classList.remove("open");
-    }
+    function openCart(){document.getElementById("cartPanel").classList.add("open");}
+    function closeCart(){document.getElementById("cartPanel").classList.remove("open");}
 
     function openPolicy(type){
-      const page = document.getElementById("policyPage");
-      const title = document.getElementById("policyTitle");
-      const text = document.getElementById("policyText");
+      const page=document.getElementById("policyPage");
+      const title=document.getElementById("policyTitle");
+      const text=document.getElementById("policyText");
+      page.style.display="block";
 
-      page.style.display = "block";
-
-      if(type === "shipping"){
-        title.textContent = "Shipping Policy";
-        text.innerHTML = `
-          <p>JÆR.WW offers worldwide shipping for all available products.</p>
-          <p>Orders are usually processed within 1–5 business days after the order has been confirmed.</p>
-          <p>Shipping times depend on your country, courier service, and customs processing.</p>
-          <p>International customers may be responsible for customs fees, import taxes, duties, or local delivery charges.</p>
-        `;
+      if(type==="shipping"){
+        title.textContent="Shipping Policy";
+        text.innerHTML="<p>JÆR.WW offers worldwide shipping for all available products.</p><p>Orders are usually processed within 1–5 business days after confirmation.</p><p>Shipping times depend on your country, courier service and customs processing.</p>";
       }
 
-      if(type === "refund"){
-        title.textContent = "Refund Policy";
-        text.innerHTML = `
-          <p>All sales are final unless the item arrives damaged, faulty, or incorrect.</p>
-          <p>Contact us within 7 days of delivery for support.</p>
-          <p>Items must be unused, unworn, unwashed, and in original condition.</p>
-        `;
+      if(type==="refund"){
+        title.textContent="Refund Policy";
+        text.innerHTML="<p>All sales are final unless the item arrives damaged, faulty, or incorrect.</p><p>Contact us within 7 days of delivery for support.</p>";
       }
 
-      if(type === "privacy"){
-        title.textContent = "Privacy Policy";
-        text.innerHTML = `
-          <p>JÆR.WW respects your privacy and customer information.</p>
-          <p>Your details are used only to process orders, provide support, and arrange shipping.</p>
-          <p>We do not sell customer personal information.</p>
-        `;
+      if(type==="privacy"){
+        title.textContent="Privacy Policy";
+        text.innerHTML="<p>JÆR.WW respects your privacy and customer information.</p><p>Your details are used only to process orders and provide support.</p>";
       }
 
-      if(type === "terms"){
-        title.textContent = "Terms & Conditions";
-        text.innerHTML = `
-          <p>By using the JÆR.WW website, you agree to these terms and conditions.</p>
-          <p>Product prices, descriptions, images, and availability may change at any time.</p>
-          <p>JÆR.WW reserves the right to refuse, cancel, or review any order if needed.</p>
-        `;
+      if(type==="terms"){
+        title.textContent="Terms & Conditions";
+        text.innerHTML="<p>By using the JÆR.WW website, you agree to these terms and conditions.</p><p>JÆR.WW reserves the right to refuse, cancel, or review any order if needed.</p>";
       }
     }
 
-    function closePolicy(){
-      document.getElementById("policyPage").style.display = "none";
-    }
-
+    function closePolicy(){document.getElementById("policyPage").style.display="none";}
     updateCart();
   </script>
 
