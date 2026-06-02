@@ -15,172 +15,8 @@
 
     body{
       min-height:100vh;
+      background:radial-gradient(circle at center,rgba(255,255,255,0.08),transparent 35%),#050505;
       color:white;
-      overflow-x:hidden;
-      position:relative;
-      background:
-        radial-gradient(circle at 18% 24%, rgba(255,255,255,.12), transparent 18%),
-        radial-gradient(circle at 82% 16%, rgba(120,140,255,.12), transparent 24%),
-        radial-gradient(circle at 50% 75%, rgba(255,255,255,.07), transparent 28%),
-        linear-gradient(180deg,#020202,#060606 45%,#000);
-    }
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:-4;
-      background-image:
-        radial-gradient(1px 1px at 20px 30px,#fff,transparent),
-        radial-gradient(1px 1px at 80px 120px,#fff,transparent),
-        radial-gradient(2px 2px at 160px 250px,#fff,transparent),
-        radial-gradient(1px 1px at 240px 90px,#fff,transparent),
-        radial-gradient(2px 2px at 380px 180px,#fff,transparent),
-        radial-gradient(1px 1px at 520px 70px,#fff,transparent),
-        radial-gradient(2px 2px at 690px 320px,#fff,transparent),
-        radial-gradient(1px 1px at 820px 160px,#fff,transparent),
-        radial-gradient(2px 2px at 990px 260px,#fff,transparent),
-        radial-gradient(1px 1px at 1150px 100px,#fff,transparent),
-        radial-gradient(2px 2px at 1320px 390px,#fff,transparent),
-        radial-gradient(1px 1px at 1480px 220px,#fff,transparent),
-        radial-gradient(1px 1px at 100px 560px,#fff,transparent),
-        radial-gradient(2px 2px at 320px 700px,#fff,transparent),
-        radial-gradient(1px 1px at 540px 620px,#fff,transparent),
-        radial-gradient(2px 2px at 760px 810px,#fff,transparent),
-        radial-gradient(1px 1px at 980px 680px,#fff,transparent),
-        radial-gradient(2px 2px at 1250px 760px,#fff,transparent);
-      background-repeat:repeat;
-      background-size:1600px 900px;
-      animation:starsMove 120s linear infinite;
-      opacity:.95;
-    }
-
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:-3;
-      background:
-        radial-gradient(circle at 12% 82%, rgba(255,255,255,.14), transparent 8%),
-        radial-gradient(circle at 86% 22%, rgba(255,255,255,.18), transparent 9%),
-        radial-gradient(circle at center, rgba(255,255,255,.04), transparent 60%);
-    }
-
-    .spacecraft{
-      position:fixed;
-      top:115px;
-      left:7%;
-      width:230px;
-      height:105px;
-      z-index:-1;
-      opacity:.92;
-      transform:rotate(-8deg);
-      animation:shipFloat 8s ease-in-out infinite;
-      filter:drop-shadow(0 0 22px rgba(255,255,255,.32));
-    }
-
-    .ship-core{
-      position:absolute;
-      top:38px;
-      left:62px;
-      width:120px;
-      height:32px;
-      background:linear-gradient(90deg,#080808 0%,#555 25%,#eee 50%,#333 78%,#050505 100%);
-      clip-path:polygon(0 50%,16% 0,78% 0,100% 50%,78% 100%,16% 100%);
-      border:1px solid rgba(255,255,255,.7);
-    }
-
-    .ship-nose{
-      position:absolute;
-      top:43px;
-      left:175px;
-      width:42px;
-      height:22px;
-      background:linear-gradient(90deg,#aaa,#fff,#222);
-      clip-path:polygon(0 0,100% 50%,0 100%);
-      border:1px solid rgba(255,255,255,.5);
-    }
-
-    .ship-window{
-      position:absolute;
-      top:45px;
-      left:112px;
-      width:22px;
-      height:14px;
-      border-radius:50%;
-      background:white;
-      box-shadow:0 0 16px white;
-    }
-
-    .ship-wing-top{
-      position:absolute;
-      top:9px;
-      left:82px;
-      width:88px;
-      height:38px;
-      background:linear-gradient(135deg,#050505,#444,#111);
-      border:1px solid rgba(255,255,255,.5);
-      clip-path:polygon(0 100%,100% 100%,68% 0);
-    }
-
-    .ship-wing-bottom{
-      position:absolute;
-      top:62px;
-      left:82px;
-      width:88px;
-      height:38px;
-      background:linear-gradient(45deg,#050505,#444,#111);
-      border:1px solid rgba(255,255,255,.5);
-      clip-path:polygon(0 0,100% 0,68% 100%);
-    }
-
-    .ship-tail{
-      position:absolute;
-      top:35px;
-      left:38px;
-      width:38px;
-      height:38px;
-      background:#090909;
-      border:1px solid rgba(255,255,255,.55);
-      clip-path:polygon(0 0,100% 35%,100% 65%,0 100%);
-    }
-
-    .ship-flame{
-      position:absolute;
-      top:47px;
-      left:0;
-      width:58px;
-      height:14px;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),rgba(255,255,255,.95));
-      filter:blur(3px);
-      animation:flamePulse .45s infinite alternate;
-    }
-
-    .planet{
-      position:fixed;
-      width:170px;
-      height:170px;
-      right:8%;
-      top:16%;
-      border-radius:50%;
-      z-index:-2;
-      background:radial-gradient(circle at 30% 30%, #fff, #555 24%, #111 62%, #000);
-      box-shadow:0 0 55px rgba(255,255,255,.18);
-      opacity:.5;
-    }
-
-    .planet::after{
-      content:"";
-      position:absolute;
-      width:230px;
-      height:42px;
-      left:-30px;
-      top:62px;
-      border:2px solid rgba(255,255,255,.35);
-      border-radius:50%;
-      transform:rotate(-18deg);
     }
 
     header{
@@ -188,8 +24,6 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      position:relative;
-      z-index:5;
     }
 
     .brand{
@@ -217,7 +51,6 @@
       text-transform:uppercase;
       cursor:pointer;
       font-size:14px;
-      letter-spacing:1px;
     }
 
     .cart-btn span{
@@ -233,10 +66,7 @@
       font-size:72px;
       margin:60px 0;
       text-transform:uppercase;
-      text-shadow:
-        0 0 15px rgba(255,255,255,.7),
-        0 0 45px rgba(255,255,255,.32),
-        0 0 90px rgba(255,255,255,.18);
+      text-shadow:0 0 25px rgba(255,255,255,0.45);
     }
 
     .products{
@@ -246,8 +76,6 @@
       justify-content:center;
       gap:90px;
       flex-wrap:wrap;
-      position:relative;
-      z-index:4;
     }
 
     .product{
@@ -263,7 +91,7 @@
     .product-image{
       height:380px;
       border:3px solid white;
-      background:rgba(255,255,255,0.045);
+      background:rgba(255,255,255,0.04);
       box-shadow:10px 10px 0 rgba(255,255,255,0.25);
       display:flex;
       align-items:center;
@@ -272,7 +100,6 @@
       font-weight:900;
       letter-spacing:3px;
       text-transform:uppercase;
-      backdrop-filter:blur(3px);
     }
 
     .product h2{
@@ -377,8 +204,6 @@
       justify-content:space-between;
       flex-wrap:wrap;
       gap:40px;
-      position:relative;
-      z-index:4;
     }
 
     footer h3{
@@ -444,21 +269,6 @@
       50%{transform:translateY(-18px);}
     }
 
-    @keyframes starsMove{
-      from{transform:translateY(0);}
-      to{transform:translateY(-900px);}
-    }
-
-    @keyframes shipFloat{
-      0%,100%{transform:translateY(0) rotate(-8deg);}
-      50%{transform:translateY(-30px) rotate(-4deg);}
-    }
-
-    @keyframes flamePulse{
-      from{width:45px;opacity:.45;}
-      to{width:75px;opacity:1;}
-    }
-
     @media(max-width:800px){
       header{padding:24px;}
       nav{gap:14px;}
@@ -468,26 +278,11 @@
       footer{flex-direction:column;}
       .policy-page{padding:30px;}
       .policy-page h1{font-size:38px;}
-      .spacecraft{transform:scale(.75) rotate(-8deg);left:0;top:125px;}
-      .planet{width:95px;height:95px;}
-      .planet::after{width:135px;height:25px;left:-20px;top:36px;}
     }
   </style>
 </head>
 
 <body>
-
-  <div class="planet"></div>
-
-  <div class="spacecraft">
-    <div class="ship-flame"></div>
-    <div class="ship-tail"></div>
-    <div class="ship-wing-top"></div>
-    <div class="ship-core"></div>
-    <div class="ship-nose"></div>
-    <div class="ship-window"></div>
-    <div class="ship-wing-bottom"></div>
-  </div>
 
   <header>
     <a href="home.html" class="brand">JÆR.WW</a>
@@ -541,7 +336,10 @@
   <footer>
     <div>
       <h3>JÆR.WW</h3>
-      <p>Independent streetwear label focused on limited drops, premium pieces and worldwide shipping.</p>
+      <p>
+        Independent streetwear label focused on limited drops,
+        premium pieces and worldwide shipping.
+      </p>
     </div>
 
     <div>
@@ -579,7 +377,12 @@
     }
 
     function addToCart(name, price){
-      cart.push({name:name, price:price, size:"One Size"});
+      cart.push({
+        name:name,
+        price:price,
+        size:"One Size"
+      });
+
       saveCart();
       updateCart();
       openCart();
@@ -634,22 +437,39 @@
 
       if(type === "shipping"){
         title.textContent = "Shipping Policy";
-        text.innerHTML = "<p>JÆR.WW offers worldwide shipping for all available products.</p><p>Orders are usually processed within 1–5 business days after confirmation.</p><p>Shipping times depend on your country, courier service and customs processing.</p>";
+        text.innerHTML = `
+          <p>JÆR.WW offers worldwide shipping for all available products.</p>
+          <p>Orders are usually processed within 1–5 business days after the order has been confirmed.</p>
+          <p>Shipping times depend on your country, courier service, and customs processing.</p>
+          <p>International customers may be responsible for customs fees, import taxes, duties, or local delivery charges.</p>
+        `;
       }
 
       if(type === "refund"){
         title.textContent = "Refund Policy";
-        text.innerHTML = "<p>All sales are final unless the item arrives damaged, faulty, or incorrect.</p><p>Contact us within 7 days of delivery for support.</p>";
+        text.innerHTML = `
+          <p>All sales are final unless the item arrives damaged, faulty, or incorrect.</p>
+          <p>If there is a problem with your order, contact us within 7 days of delivery.</p>
+          <p>Items must be unused, unworn, unwashed, and in original condition.</p>
+        `;
       }
 
       if(type === "privacy"){
         title.textContent = "Privacy Policy";
-        text.innerHTML = "<p>JÆR.WW respects your privacy and customer information.</p><p>Your details are used only to process orders and provide support.</p>";
+        text.innerHTML = `
+          <p>JÆR.WW respects your privacy and customer information.</p>
+          <p>Your details are used only to process orders, provide support, and arrange shipping.</p>
+          <p>We do not sell customer personal information.</p>
+        `;
       }
 
       if(type === "terms"){
         title.textContent = "Terms & Conditions";
-        text.innerHTML = "<p>By using the JÆR.WW website, you agree to these terms and conditions.</p><p>JÆR.WW reserves the right to refuse, cancel, or review any order if needed.</p>";
+        text.innerHTML = `
+          <p>By using the JÆR.WW website, you agree to these terms and conditions.</p>
+          <p>Product prices, descriptions, images, and availability may change at any time.</p>
+          <p>JÆR.WW reserves the right to refuse, cancel, or review any order if needed.</p>
+        `;
       }
     }
 
