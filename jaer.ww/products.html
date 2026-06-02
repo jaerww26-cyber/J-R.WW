@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JÆR.WW | Products</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      background:radial-gradient(circle at center,rgba(255,255,255,0.08),transparent 35%),#050505;
+      color:white;
+    }
+
+    header{
+      padding:28px 50px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .brand{
+      color:white;
+      text-decoration:none;
+      font-size:32px;
+      font-weight:900;
+      letter-spacing:4px;
+      text-shadow:0 0 18px rgba(255,255,255,0.45);
+    }
+
+    nav{
+      display:flex;
+      gap:25px;
+      align-items:center;
+    }
+
+    nav a,
+    .cart-btn{
+      color:white;
+      background:none;
+      border:none;
+      text-decoration:none;
+      font-weight:900;
+      text-transform:uppercase;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    .cart-btn span{
+      background:white;
+      color:black;
+      padding:3px 8px;
+      border-radius:50%;
+      margin-left:6px;
+    }
+
+    .title{
+      text-align:center;
+      font-size:72px;
+      margin:60px 0;
+      text-transform:uppercase;
+      text-shadow:0 0 25px rgba(255,255,255,0.45);
+    }
+
+    .products{
+      width:85%;
+      margin:0 auto;
+      display:flex;
+      justify-content:center;
+      gap:90px;
+      flex-wrap:wrap;
+    }
+
+    .product{
+      width:360px;
+      text-align:center;
+      animation:float 4s ease-in-out infinite;
+    }
+
+    .product:nth-child(2){
+      animation-delay:.6s;
+    }
+
+    .product-image{
+      height:380px;
+      border:3px solid white;
+      background:rgba(255,255,255,0.04);
+      box-shadow:10px 10px 0 rgba(255,255,255,0.25);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:28px;
+      font-weight:900;
+      letter-spacing:3px;
+      text-transform:uppercase;
+    }
+
+    .product h2{
+      font-size:30px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+
+    .price{
+      font-size:26px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    .buttons{
+      display:flex;
+      gap:12px;
+    }
+
+    .buttons a,
+    .buttons button{
+      flex:1;
+      padding:18px;
+      background:white;
+      color:black;
+      border:3px solid black;
+      text-decoration:none;
+      font-weight:900;
+      text-transform:uppercase;
+      cursor:pointer;
+      box-shadow:8px 8px 0 rgba(255,255,255,0.25);
+    }
+
+    .cart-panel{
+      position:fixed;
+      top:0;
+      right:-420px;
+      width:420px;
+      max-width:100%;
+      height:100vh;
+      background:#0a0a0a;
+      border-left:2px solid white;
+      padding:30px;
+      z-index:99;
+      transition:.3s;
+      overflow-y:auto;
+    }
+
+    .cart-panel.open{
+      right:0;
+    }
+
+    .cart-panel h2{
+      margin-bottom:25px;
+      text-transform:uppercase;
+    }
+
+    .cart-item{
+      border-bottom:1px solid rgba(255,255,255,.2);
+      padding:15px 0;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      align-items:flex-start;
+    }
+
+    .remove-btn{
+      background:none;
+      border:none;
+      color:#888;
+      font-size:12px;
+      text-transform:uppercase;
+      cursor:pointer;
+      margin-top:4px;
+    }
+
+    .remove-btn:hover{
+      color:white;
+    }
+
+    .checkout{
+      display:block;
+      margin-top:30px;
+      background:white;
+      color:black;
+      text-align:center;
+      padding:18px;
+      text-decoration:none;
+      font-weight:900;
+      text-transform:uppercase;
+    }
+
+    .close{
+      background:none;
+      color:white;
+      border:none;
+      font-size:24px;
+      float:right;
+      cursor:pointer;
+    }
+
+    footer{
+      margin-top:120px;
+      padding:50px;
+      border-top:1px solid rgba(255,255,255,0.1);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:40px;
+    }
+
+    footer h3{
+      margin-bottom:18px;
+      text-transform:uppercase;
+      letter-spacing:3px;
+    }
+
+    footer p{
+      color:#888;
+      line-height:2;
+      max-width:260px;
+    }
+
+    footer a{
+      color:#888;
+      text-decoration:none;
+      line-height:2;
+      cursor:pointer;
+    }
+
+    footer a:hover{
+      color:white;
+    }
+
+    .policy-page{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:#050505;
+      color:white;
+      z-index:999;
+      padding:60px;
+      overflow-y:auto;
+    }
+
+    .policy-page button{
+      background:white;
+      color:black;
+      border:none;
+      padding:15px 25px;
+      font-weight:900;
+      text-transform:uppercase;
+      cursor:pointer;
+      margin-bottom:40px;
+    }
+
+    .policy-page h1{
+      font-size:56px;
+      text-transform:uppercase;
+      margin-bottom:30px;
+    }
+
+    .policy-page div{
+      max-width:850px;
+      color:#cfcfcf;
+      line-height:2;
+      font-size:18px;
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0);
+      }
+
+      50%{
+        transform:translateY(-18px);
+      }
+    }
+
+    @media(max-width:800px){
+
+      header{
+        padding:24px;
+      }
+
+      nav{
+        gap:14px;
+      }
+
+      .title{
+        font-size:42px;
+      }
+
+      .product{
+        width:85%;
+      }
+
+      .buttons{
+        flex-direction:column;
+      }
+
+      footer{
+        flex-direction:column;
+      }
+
+      .policy-page{
+        padding:30px;
+      }
+
+      .policy-page h1{
+        font-size:38px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="home.html" class="brand">JÆR.WW</a>
+
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="contact.html">Contact</a>
+
+      <button class="cart-btn" onclick="openCart()">
+        Cart <span id="cart-count">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <h1 class="title">New Arrivals</h1>
+
+  <section class="products">
+
+    <div class="product">
+      <div class="product-image">Product Image</div>
+      <h2>WW Cap 1</h2>
+      <div class="price">£40</div>
+
+      <div class="buttons">
+        <a href="WWCAP1.html">View Product</a>
+        <button onclick="addToCart('WW Cap 1', 40)">Add</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">Product Image</div>
+      <h2>WW Cap 2</h2>
+      <div class="price">£40</div>
+
+      <div class="buttons">
+        <a href="WWCAP2.html">View Product</a>
+        <button onclick="addToCart('WW Cap 2', 40)">Add</button>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="cart-panel" id="cartPanel">
+    <button class="close" onclick="closeCart()">×</button>
+    <h2>Your Cart</h2>
+    <div id="cartItems"></div>
+    <h3 id="subtotal">Subtotal: £0</h3>
+    <a href="checkout.html" class="checkout">Checkout</a>
+  </div>
+
+  <footer>
+
+    <div>
+      <h3>JÆR.WW</h3>
+      <p>
+        Independent streetwear label focused on limited drops,
+        premium pieces and worldwide shipping.
+      </p>
+    </div>
+
+    <div>
+      <h3>Policies</h3>
+      <p>
+        <a onclick="openPolicy('shipping')">Shipping Policy</a><br>
+        <a onclick="openPolicy('refund')">Refund Policy</a><br>
+        <a onclick="openPolicy('privacy')">Privacy Policy</a><br>
+        <a onclick="openPolicy('terms')">Terms & Conditions</a>
+      </p>
+    </div>
+
+    <div>
+      <h3>Contact</h3>
+      <p>
+        <a href="contact.html">Contact Page</a><br>
+        <a href="mailto:jaer.ww26@gmail.com">jaer.ww26@gmail.com</a><br>
+        Worldwide Shipping<br>
+        London, United Kingdom
+      </p>
+    </div>
+
+  </footer>
+
+  <div id="policyPage" class="policy-page">
+    <button onclick="closePolicy()">Back To Shop</button>
+    <h1 id="policyTitle"></h1>
+    <div id="policyText"></div>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function saveCart(){
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    function addToCart(name, price){
+      cart.push({
+        name:name,
+        price:price,
+        size:"One Size"
+      });
+
+      saveCart();
+      updateCart();
+      openCart();
+    }
+
+    function removeFromCart(index){
+      cart.splice(index, 1);
+      saveCart();
+      updateCart();
+    }
+
+    function updateCart(){
+      document.getElementById("cart-count").textContent = cart.length;
+
+      const cartItems = document.getElementById("cartItems");
+      cartItems.innerHTML = "";
+
+      let subtotal = 0;
+
+      cart.forEach(function(item, index){
+        subtotal += item.price;
+
+        cartItems.innerHTML +=
+        '<div class="cart-item">' +
+          '<div>' +
+            '<strong>' + item.name + '</strong><br>' +
+            item.size + '<br>' +
+            '£' + item.price +
+          '</div>' +
+          '<button class="remove-btn" onclick="removeFromCart(' + index + ')">Remove</button>' +
+        '</div>';
+      });
+
+      document.getElementById("subtotal").textContent =
+      "Subtotal: £" + subtotal;
+    }
+
+    function openCart(){
+      document.getElementById("cartPanel").classList.add("open");
+    }
+
+    function closeCart(){
+      document.getElementById("cartPanel").classList.remove("open");
+    }
+
+    function openPolicy(type){
+      const page = document.getElementById("policyPage");
+      const title = document.getElementById("policyTitle");
+      const text = document.getElementById("policyText");
+
+      page.style.display = "block";
+
+      if(type === "shipping"){
+        title.textContent = "Shipping Policy";
+        text.innerHTML = `
+          <p>JÆR.WW offers worldwide shipping for all available products.</p>
+          <p>Orders are usually processed within 1–5 business days after the order has been confirmed.</p>
+          <p>During busy periods, product drops, holidays, or high demand, processing may take slightly longer.</p>
+          <p>Once your order has been processed, shipping time depends on your country, courier service, and customs processing.</p>
+          <p>UK orders may arrive faster than international orders.</p>
+          <p>European and worldwide orders may take longer depending on destination and courier availability.</p>
+          <p>Customers are responsible for entering the correct shipping address at checkout.</p>
+          <p>JÆR.WW is not responsible for lost parcels caused by incorrect customer information.</p>
+          <p>If you enter the wrong shipping address, contact us as soon as possible at jaer.ww26@gmail.com.</p>
+          <p>If the order has already been shipped, we may not be able to change the delivery address.</p>
+          <p>International customers may be responsible for customs fees, import taxes, duties, or local delivery charges.</p>
+          <p>These charges are not controlled by JÆR.WW and are not included in the product price.</p>
+          <p>Shipping delays caused by customs, weather, courier issues, strikes, public holidays, or incorrect delivery details are outside of our control.</p>
+          <p>If your order has not arrived after a reasonable time, contact us with your name, email, and order details.</p>
+          <p>We will do our best to help, but courier delays are not always within our control.</p>
+        `;
+      }
+
+      if(type === "refund"){
+        title.textContent = "Refund Policy";
+        text.innerHTML = `
+          <p>All sales are final unless the item arrives damaged, faulty, or incorrect.</p>
+          <p>If there is a problem with your order, you must contact us within 7 days of delivery.</p>
+          <p>To request support, email jaer.ww26@gmail.com with your name, order details, and clear photos of the issue.</p>
+          <p>Items must be unused, unworn, unwashed, and in original condition.</p>
+          <p>Items that have been worn, washed, damaged by the customer, stained, altered, or used cannot be refunded.</p>
+          <p>Refunds are reviewed case by case.</p>
+          <p>Submitting a refund request does not guarantee approval.</p>
+          <p>If a refund is approved, it will usually be sent back to the original payment method where possible.</p>
+          <p>Shipping fees are non-refundable unless the issue was caused by JÆR.WW.</p>
+          <p>Return shipping costs may be the responsibility of the customer unless the item was incorrect or faulty.</p>
+          <p>Limited drop items may not be exchangeable if stock is no longer available.</p>
+          <p>If a replacement is available, we may offer a replacement instead of a refund.</p>
+          <p>JÆR.WW reserves the right to refuse a refund request if the item does not meet the return conditions.</p>
+          <p>We recommend checking all product information carefully before placing an order.</p>
+        `;
+      }
+
+      if(type === "privacy"){
+        title.textContent = "Privacy Policy";
+        text.innerHTML = `
+          <p>JÆR.WW respects your privacy and takes customer information seriously.</p>
+          <p>When you place an order, contact us, or use the website, we may collect your name, email address, phone number, shipping address, and order details.</p>
+          <p>This information is used only to process orders, provide customer support, arrange shipping, respond to messages, and improve the shopping experience.</p>
+          <p>We do not sell customer personal information.</p>
+          <p>We do not share your information with unrelated third parties for marketing purposes.</p>
+          <p>Your details may only be shared when necessary with delivery companies, payment providers, or services required to complete your order.</p>
+          <p>Customer emails may be used to contact you about your order, shipping updates, questions, or support requests.</p>
+          <p>If you contact us through the contact form, your message and email address may be stored so we can reply.</p>
+          <p>We aim to keep customer information safe, but no website or online service can guarantee complete security.</p>
+          <p>Please do not send unnecessary sensitive personal information through the contact form.</p>
+          <p>By using this website, you agree that JÆR.WW may collect the information needed to process your order and communicate with you.</p>
+          <p>If you want your customer information removed, contact jaer.ww26@gmail.com.</p>
+          <p>Some information may need to be kept for order records, fraud prevention, tax, or legal reasons.</p>
+        `;
+      }
+
+      if(type === "terms"){
+        title.textContent = "Terms & Conditions";
+        text.innerHTML = `
+          <p>By using the JÆR.WW website, you agree to these terms and conditions.</p>
+          <p>All products, prices, descriptions, images, and availability may change at any time without notice.</p>
+          <p>JÆR.WW reserves the right to refuse, cancel, or review any order if needed.</p>
+          <p>Customers are responsible for entering correct personal information, shipping information, and contact details at checkout.</p>
+          <p>JÆR.WW is not responsible for delays, failed deliveries, or lost parcels caused by incorrect customer information.</p>
+          <p>Products are sold as limited items and may not always be restocked.</p>
+          <p>Using this website does not guarantee product availability until your order has been confirmed.</p>
+          <p>All content on this website, including brand name, logo, design, images, layout, text, and product presentation, belongs to JÆR.WW unless stated otherwise.</p>
+          <p>Unauthorized copying, stealing, reposting, reselling, or commercial use of JÆR.WW branding or website content is not allowed.</p>
+          <p>Customers must not use the website for fraudulent activity, false information, or misuse of checkout/contact forms.</p>
+          <p>If suspicious or fraudulent activity is detected, JÆR.WW may cancel the order or refuse service.</p>
+          <p>JÆR.WW may update these terms at any time as the brand grows.</p>
+          <p>Continuing to use the website means you accept the latest version of these terms.</p>
+          <p>For questions about these terms, contact jaer.ww26@gmail.com.</p>
+        `;
+      }
+    }
+
+    function closePolicy(){
+      document.getElementById("policyPage").style.display = "none";
+    }
+
+    updateCart();
+  </script>
+
+</body>
+</html>

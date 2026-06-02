@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JÆR.WW</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    body{
+      width:100vw;
+      height:100vh;
+      overflow:hidden;
+      position:relative;
+      background:#050505;
+    }
+
+    .bg-video{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:0;
+      opacity:0.35;
+    }
+
+    .overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.62);
+      z-index:1;
+    }
+
+    .content{
+      position:relative;
+      z-index:5;
+      width:100%;
+      height:100%;
+    }
+
+    .title{
+      position:absolute;
+      top:4%;
+      left:50%;
+      transform:translateX(-50%);
+      font-size:95px;
+      font-weight:900;
+      letter-spacing:5px;
+      color:white;
+      text-transform:uppercase;
+      text-shadow:0 0 22px rgba(255,255,255,0.45);
+      white-space:nowrap;
+      animation:floatTitle 4s ease-in-out infinite;
+    }
+
+    .welcome{
+      position:absolute;
+      top:26%;
+      left:50%;
+      transform:translateX(-50%);
+      width:640px;
+      background:#050505;
+      border:4px solid white;
+      padding:28px 40px;
+      color:white;
+      font-size:34px;
+      font-weight:900;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      box-shadow:10px 10px 0 rgba(255,255,255,0.75);
+      z-index:5;
+      animation:floatBox 4s ease-in-out infinite;
+      text-align:center;
+    }
+
+    .button{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      width:360px;
+      text-align:center;
+      padding:24px;
+      background:white;
+      color:black;
+      text-decoration:none;
+      font-size:30px;
+      font-weight:900;
+      text-transform:uppercase;
+      border:4px solid black;
+      box-shadow:10px 10px 0 rgba(255,255,255,0.28);
+      transition:0.2s ease;
+      z-index:5;
+    }
+
+    .button:hover{
+      transform:translateX(-50%) scale(1.05) rotate(-1deg);
+      background:#ececec;
+    }
+
+    .shop{
+      top:46%;
+      animation:floatButton 4s ease-in-out infinite;
+    }
+
+    .bottom-text{
+      position:absolute;
+      bottom:8%;
+      left:50%;
+      transform:translateX(-50%);
+      color:#777;
+      font-size:12px;
+      letter-spacing:6px;
+      text-transform:uppercase;
+      z-index:5;
+      white-space:nowrap;
+    }
+
+    @keyframes floatTitle{
+      0%,100%{ margin-top:0; }
+      50%{ margin-top:14px; }
+    }
+
+    @keyframes floatBox{
+      0%,100%{ margin-top:0; }
+      50%{ margin-top:-16px; }
+    }
+
+    @keyframes floatButton{
+      0%,100%{ margin-top:0; }
+      50%{ margin-top:14px; }
+    }
+
+    @media(max-width:900px){
+      .title{ font-size:52px; top:4%; }
+      .welcome{ width:88%; font-size:20px; padding:20px; }
+      .button{ width:80%; font-size:22px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="logo-spin.mp4" type="video/mp4">
+  </video>
+
+  <div class="overlay"></div>
+
+  <main class="content">
+
+    <h1 class="title">JÆR.WW</h1>
+
+    <div class="welcome">
+      Welcome To The First Drop
+    </div>
+
+    <a href="products.html" class="button shop">
+      Start Shopping
+    </a>
+
+    <div class="bottom-text">Click A Button To Enter</div>
+
+  </main>
+
+</body>
+</html>

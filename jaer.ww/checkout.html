@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | JÆR.WW</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Helvetica Neue",Arial,sans-serif;}
+
+body{min-height:100vh;background:#050505;color:white;}
+
+header{
+  padding:28px 50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.brand,.back{
+  color:white;
+  text-decoration:none;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.brand{font-size:30px;letter-spacing:5px;}
+.back{font-size:12px;letter-spacing:3px;}
+
+.checkout{
+  width:90%;
+  max-width:1100px;
+  margin:60px auto;
+  display:grid;
+  grid-template-columns:1fr 380px;
+  gap:60px;
+}
+
+.box{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.18);
+  padding:32px;
+  box-shadow:10px 10px 0 rgba(255,255,255,.08);
+}
+
+h1{font-size:56px;text-transform:uppercase;margin-bottom:30px;}
+h2{font-size:22px;text-transform:uppercase;margin:30px 0 18px;letter-spacing:3px;}
+
+label{
+  display:block;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  color:#888;
+  margin-bottom:8px;
+}
+
+input,select,textarea{
+  width:100%;
+  padding:16px;
+  margin-bottom:16px;
+  background:#111;
+  border:1px solid rgba(255,255,255,.25);
+  color:white;
+  outline:none;
+}
+
+textarea{min-height:120px;resize:none;}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+button{
+  width:100%;
+  padding:20px;
+  background:white;
+  color:black;
+  border:none;
+  font-size:15px;
+  font-weight:900;
+  text-transform:uppercase;
+  cursor:pointer;
+  margin-top:20px;
+}
+
+.item{
+  display:flex;
+  justify-content:space-between;
+  border-bottom:1px solid rgba(255,255,255,.15);
+  padding:15px 0;
+}
+
+.total{
+  display:flex;
+  justify-content:space-between;
+  margin-top:25px;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.25);
+  font-size:24px;
+  font-weight:900;
+}
+
+@media(max-width:900px){
+  .checkout{grid-template-columns:1fr;}
+  .row{grid-template-columns:1fr;}
+  h1{font-size:40px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="home.html" class="brand">JÆR.WW</a>
+  <a href="products.html" class="back">Back To Shop</a>
+</header>
+
+<main class="checkout">
+
+<form class="box" action="https://formsubmit.co/jaer.ww26@gmail.com" method="POST">
+
+  <h1>Order Form</h1>
+
+  <h2>Contact</h2>
+
+  <label>Email</label>
+  <input type="email" name="Email" required>
+
+  <label>Phone</label>
+  <input type="tel" name="Phone" required>
+
+  <h2>Delivery</h2>
+
+  <div class="row">
+    <div>
+      <label>First Name</label>
+      <input type="text" name="First Name" required>
+    </div>
+
+    <div>
+      <label>Last Name</label>
+      <input type="text" name="Last Name" required>
+    </div>
+  </div>
+
+  <label>Country</label>
+  <select name="Country" required>
+    <option>United Kingdom</option>
+    <option>United States</option>
+    <option>Canada</option>
+    <option>France</option>
+    <option>Germany</option>
+    <option>Spain</option>
+    <option>Italy</option>
+    <option>Portugal</option>
+    <option>Netherlands</option>
+    <option>Belgium</option>
+    <option>Ireland</option>
+    <option>Other</option>
+  </select>
+
+  <label>Address</label>
+  <input type="text" name="Address" required>
+
+  <label>Apartment / Unit</label>
+  <input type="text" name="Apartment">
+
+  <div class="row">
+    <div>
+      <label>City</label>
+      <input type="text" name="City" required>
+    </div>
+
+    <div>
+      <label>Postcode / ZIP</label>
+      <input type="text" name="Postcode" required>
+    </div>
+  </div>
+
+  <label>Order Notes</label>
+  <textarea name="Order Notes"></textarea>
+
+  <input type="hidden" name="Order Items" id="orderItemsInput">
+  <input type="hidden" name="Subtotal" id="subtotalInput">
+  <input type="hidden" name="Shipping" value="£4.99">
+  <input type="hidden" name="Total" id="totalInput">
+
+  <input type="hidden" name="_subject" value="New JÆR.WW Order">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+
+  <button type="submit">Submit Order Details</button>
+
+</form>
+
+<aside class="box">
+
+  <h2>Order Summary</h2>
+
+  <div id="summaryItems"></div>
+
+  <div class="total">
+    <span>Total</span>
+    <span id="total">£0</span>
+  </div>
+
+</aside>
+
+</main>
+
+<script>
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+const summaryItems = document.getElementById("summaryItems");
+
+let subtotal = 0;
+let orderText = "";
+
+if(cart.length === 0){
+  summaryItems.innerHTML = "<p>Your cart is empty.</p>";
+} else {
+  cart.forEach(function(item){
+    subtotal += item.price;
+    orderText += item.name + " - " + item.size + " - £" + item.price + "\\n";
+
+    summaryItems.innerHTML += `
+      <div class="item">
+        <div>
+          <strong>${item.name}</strong><br>
+          ${item.size}
+        </div>
+        <div>£${item.price}</div>
+      </div>
+    `;
+  });
+}
+
+const shipping = cart.length > 0 ? 4.99 : 0;
+const total = subtotal + shipping;
+
+document.getElementById("total").textContent = "£" + total.toFixed(2);
+document.getElementById("orderItemsInput").value = orderText;
+document.getElementById("subtotalInput").value = "£" + subtotal.toFixed(2);
+document.getElementById("totalInput").value = "£" + total.toFixed(2);
+</script>
+
+</body>
+</html>
