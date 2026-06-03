@@ -303,49 +303,7 @@
       75%{opacity:1;}
       100%{opacity:.15;}
     }
-.spacecraft{
-  position:fixed;
-  width:220px;
-  opacity:.35;
-  pointer-events:none;
-  z-index:-1;
-  filter:
-    drop-shadow(0 0 20px rgba(255,255,255,.4))
-    drop-shadow(0 0 50px rgba(255,255,255,.15));
-  animation:spacecraftFly 45s linear infinite;
-}
 
-@keyframes spacecraftFly{
-  0%{
-    left:-250px;
-    top:75%;
-    transform:rotate(-15deg);
-  }
-
-  25%{
-    left:15%;
-    top:20%;
-    transform:rotate(5deg);
-  }
-
-  50%{
-    left:60%;
-    top:10%;
-    transform:rotate(15deg);
-  }
-
-  75%{
-    left:100%;
-    top:50%;
-    transform:rotate(35deg);
-  }
-
-  100%{
-    left:-250px;
-    top:75%;
-    transform:rotate(345deg);
-  }
-}
     @media(max-width:800px){
       header{padding:24px;}
       nav{gap:14px;}
@@ -360,8 +318,6 @@
 </head>
 
 <body>
-
-  <img src="spacecraft.jpg" class="spacecraft" alt="">
 
   <div class="stars">
     <span class="star small" style="top:5%;left:10%;">✦</span>
