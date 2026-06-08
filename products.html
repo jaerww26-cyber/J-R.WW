@@ -35,10 +35,7 @@
     .star{
       position:absolute;
       color:white;
-      text-shadow:
-        0 0 4px rgba(255,255,255,.9),
-        0 0 10px rgba(255,255,255,.75),
-        0 0 18px rgba(255,255,255,.45);
+      text-shadow:0 0 4px white,0 0 10px white,0 0 18px rgba(255,255,255,.45);
       animation:twinkle 4s ease-in-out infinite;
     }
 
@@ -132,9 +129,9 @@
     }
 
     .product-image img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
+      width:88%;
+      height:88%;
+      object-fit:contain;
       object-position:center;
       display:block;
     }
@@ -185,9 +182,7 @@
       overflow-y:auto;
     }
 
-    .cart-panel.open{
-      right:0;
-    }
+    .cart-panel.open{ right:0; }
 
     .cart-item{
       border-bottom:1px solid rgba(255,255,255,.2);
@@ -208,9 +203,7 @@
       margin-top:4px;
     }
 
-    .remove-btn:hover{
-      color:white;
-    }
+    .remove-btn:hover{ color:white; }
 
     .checkout{
       display:block;
@@ -262,9 +255,7 @@
       cursor:pointer;
     }
 
-    footer a:hover{
-      color:white;
-    }
+    footer a:hover{ color:white; }
 
     .policy-page{
       display:none;
@@ -409,7 +400,6 @@
   <h1 class="title">New Arrivals</h1>
 
   <section class="products">
-
     <div class="product">
       <div class="product-image">
         <img src="wwcap1.png" alt="WW Cap 1">
@@ -435,7 +425,6 @@
         <button onclick="addToCart('WW Cap 2', 40)">Add</button>
       </div>
     </div>
-
   </section>
 
   <div class="cart-panel" id="cartPanel">
@@ -449,10 +438,7 @@
   <footer>
     <div>
       <h3>JÆR.WW</h3>
-      <p>
-        Independent streetwear label focused on limited drops,
-        premium pieces and worldwide shipping.
-      </p>
+      <p>Independent streetwear label focused on limited drops, premium pieces and worldwide shipping.</p>
     </div>
 
     <div>
@@ -490,12 +476,7 @@
     }
 
     function addToCart(name, price){
-      cart.push({
-        name:name,
-        price:price,
-        size:"One Size"
-      });
-
+      cart.push({name:name, price:price, size:"One Size"});
       saveCart();
       updateCart();
       openCart();
@@ -509,28 +490,21 @@
 
     function updateCart(){
       document.getElementById("cart-count").textContent = cart.length;
-
       const cartItems = document.getElementById("cartItems");
       cartItems.innerHTML = "";
-
       let subtotal = 0;
 
       cart.forEach(function(item, index){
         subtotal += item.price;
-
         cartItems.innerHTML +=
         '<div class="cart-item">' +
-          '<div>' +
-            '<strong>' + item.name + '</strong><br>' +
-            item.size + '<br>' +
-            '£' + item.price +
-          '</div>' +
+          '<div><strong>' + item.name + '</strong><br>' +
+          item.size + '<br>£' + item.price + '</div>' +
           '<button class="remove-btn" onclick="removeFromCart(' + index + ')">Remove</button>' +
         '</div>';
       });
 
-      document.getElementById("subtotal").textContent =
-      "Subtotal: £" + subtotal;
+      document.getElementById("subtotal").textContent = "Subtotal: £" + subtotal;
     }
 
     function openCart(){
@@ -545,44 +519,26 @@
       const page = document.getElementById("policyPage");
       const title = document.getElementById("policyTitle");
       const text = document.getElementById("policyText");
-
       page.style.display = "block";
 
       if(type === "shipping"){
         title.textContent = "Shipping Policy";
-        text.innerHTML = `
-          <p>JÆR.WW offers worldwide shipping for all available products.</p>
-          <p>Orders are usually processed within 1–5 business days after the order has been confirmed.</p>
-          <p>Shipping times depend on your country, courier service, and customs processing.</p>
-          <p>International customers may be responsible for customs fees, import taxes, duties, or local delivery charges.</p>
-        `;
+        text.innerHTML = `<p>JÆR.WW offers worldwide shipping for all available products.</p>`;
       }
 
       if(type === "refund"){
         title.textContent = "Refund Policy";
-        text.innerHTML = `
-          <p>All sales are final unless the item arrives damaged, faulty, or incorrect.</p>
-          <p>If there is a problem with your order, contact us within 7 days of delivery.</p>
-          <p>Items must be unused, unworn, unwashed, and in original condition.</p>
-        `;
+        text.innerHTML = `<p>All sales are final unless the item arrives damaged, faulty, or incorrect.</p>`;
       }
 
       if(type === "privacy"){
         title.textContent = "Privacy Policy";
-        text.innerHTML = `
-          <p>JÆR.WW respects your privacy and customer information.</p>
-          <p>Your details are used only to process orders, provide support, and arrange shipping.</p>
-          <p>We do not sell customer personal information.</p>
-        `;
+        text.innerHTML = `<p>JÆR.WW respects your privacy and customer information.</p>`;
       }
 
       if(type === "terms"){
         title.textContent = "Terms & Conditions";
-        text.innerHTML = `
-          <p>By using the JÆR.WW website, you agree to these terms and conditions.</p>
-          <p>Product prices, descriptions, images, and availability may change at any time.</p>
-          <p>JÆR.WW reserves the right to refuse, cancel, or review any order if needed.</p>
-        `;
+        text.innerHTML = `<p>By using the JÆR.WW website, you agree to these terms and conditions.</p>`;
       }
     }
 
